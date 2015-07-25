@@ -1,0 +1,8 @@
+@(form: Form[People])(implicit messages: Messages)
+
+@helper.form(action = routes.Application.addPeople) {
+@helper.inputText(form("id"))
+@helper.inputText(form("name"))
+@helper.inputText(form("age"))
+<input type="submit" value="add user"/>
+}

@@ -1,0 +1,7 @@
+@import models.People
+
+@(people: Seq[People])
+
+@for(unit <- people) {
+    <p>@unit.toHtml</p>
+}

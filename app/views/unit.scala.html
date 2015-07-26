@@ -1,8 +1,20 @@
-@(form: Form[People])(implicit messages: Messages)
+@(form: Form[Event])(implicit messages: Messages)
+<!DOCTYPE html>
 
-@helper.form(action = routes.Application.addPeople) {
-@helper.inputText(form("id"))
-@helper.inputText(form("name"))
-@helper.inputText(form("age"))
-<input type="submit" value="add user"/>
-}
+<html lang="en">
+<head>
+    <title>Baza Danych</title>
+    <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/form.css")">
+    <link rel="shortcut icon" type="image/png" href="@routes.Assets.versioned("images/favicon.png")">
+</head>
+<body>
+<div class="dark-matter">
+    @helper.form(action = routes.Application.addEvent) {
+    @helper.inputText(form("name"))
+    @helper.inputDate(form("date"))
+    @helper.inputText(form("creator"))
+    <input type="submit" value="Add Event"/>
+    }
+</div>
+</body>
+</html>

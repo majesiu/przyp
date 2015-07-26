@@ -1,7 +1,18 @@
-@import models.People
+@import models.Event
 
-@(people: Seq[People])
+@(events: Seq[Event])
 
-@for(unit <- people) {
-    <p>@unit.toHtml</p>
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <title>Baza Danych</title>
+    <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/hehe.css")">
+    <link rel="shortcut icon" type="image/png" href="@routes.Assets.versioned("images/favicon.png")">
+</head>
+<body>
+@for(event <- events) {
+<div class="stitched">@event.toHtml</div>
 }
+</body>
+</html>

@@ -11,7 +11,10 @@ libraryDependencies ++= Seq(
   cache,
   ws,
   specs2 % Test,
-  "com.typesafe.play" %% "anorm" % "2.4.0"
+  "com.typesafe.play" %% "anorm" % "2.4.0",
+  "jp.t2v" %% "play2-auth" % "0.14.0",
+  "jp.t2v" %% "play2-auth-social" % "0.14.0", // for social login
+  "jp.t2v" %% "play2-auth-test" % "0.14.0" % "test"
 )
 
 

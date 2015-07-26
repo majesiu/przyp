@@ -7,47 +7,37 @@ import play.api.Play.current
 import play.api.i18n.Messages.Implicits._
 import anorm._
 import play.api.db.DB
-import models.People
+import models.Event
 
 
 class Application extends Controller {
 
-  val myCaseClassParser: RowParser[People] = (
-      SqlParser.int("id") ~
-      SqlParser.str("name")~
-      SqlParser.int("age")
-    ) map {
-    case cval1 ~ cval2 ~ cval3 =>
-      new People(cval1, cval2, cval3)
-  }
-
-  val allRowsParser: ResultSetParser[List[People]] = myCaseClassParser.*
 
   def index = Action {
     DB.withConnection { implicit c =>
-      Ok(views.html.index(SQL("Select * from people").as(allRowsParser).toSeq))
+      Ok(views.html.index(Event.findAll()))
     }
   }
 
-  val addUnitForm = Form(
+  val addEventForm = Form(
     mapping(
-      "id" -> number,
-      "name" -> nonEmptyText,
-      "age" -> number
-     )(People.apply)(People.unapply)
+      "name" -> text,
+      "date" -> date,
+      "creator" -> text
+    )(Event.apply)(Event.unapply)
   )
 
   def add = Action {
-    Ok(views.html.unit(addUnitForm))
+    Ok(views.html.unit(addEventForm))
   }
 
-  def addPeople = Action { implicit c =>
-    addUnitForm.bindFromRequest.fold(
+  def addEvent = Action { implicit c =>
+    addEventForm.bindFromRequest.fold(
     errors => BadRequest,
     {
-      case People(id,name,age) =>
-        People.addPeople(People(id,name,age))
-        Ok("Book Successfully added!")
+      case Event(name, date, creator) =>
+        Event.addEvent(Event(name, date, creator))
+        Ok("Event Successfully added!")
     }
     )
   }

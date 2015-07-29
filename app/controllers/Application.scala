@@ -37,8 +37,8 @@ class Application extends Controller {
     {
       case Event(name, date, creator) =>
         Event.addEvent(Event(name, date, creator))
-        Ok("Event Successfully added!")
-    }
+        Redirect("/new")
+   }
     )
   }
 }

@@ -15,7 +15,7 @@ case class Event(name: String, date: Date, creator: String) {
 
 object Event {
   val simple = {
-    SqlParser.str("name") ~
+      SqlParser.str("name") ~
       SqlParser.date("date") ~
       SqlParser.str("creator") map {
       case name ~ date ~ creator => Event(name, date, creator)

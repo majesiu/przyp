@@ -1,4 +1,4 @@
-@(form: Form[Event])(implicit messages: Messages)
+@(form: Form[SearchModel])(implicit messages: Messages)
 <!DOCTYPE html>
 
 <html lang="en">
@@ -13,14 +13,14 @@
 <div class="container">
     <ul class="nav nav-pills">
         <li role="presentation"><a href="/index">Listuj</a></li>
-        <li role="presentation"><a href="/search">Szukaj</a></li>
-        <li role="presentation"  class="active"><a href="/new">Dodaj</a></li>
+        <li role="presentation"  class="active"><a href="/search">Szukaj</a></li>
+        <li role="presentation"><a href="/new">Dodaj</a></li>
     </ul>
-    @helper.form(action = routes.Application.addEvent) {
+    @helper.form(action = routes.Search.startSearch) {
     @helper.inputText(form("name"))
     @helper.inputDate(form("date"))
     @helper.inputText(form("creator"))
-    <input type="submit" value="Add Event"/>
+    <input type="submit" value="Search Event"/>
     }
 </div>
 </body>

@@ -1,0 +1,45 @@
+@(events: Seq[Event])
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <title>Wyniki zapytania</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+</head>
+
+<body>
+<div class="container">
+    <ul class="nav nav-pills">
+        <li role="presentation" class="active"><a href="/index">Listuj</a></li>
+        <li role="presentation"><a href="/search">Szukaj</a></li>
+        <li role="presentation"><a href="/new">Dodaj</a></li>
+    </ul>
+
+    <div class="container">
+        <h2>Lista Wydarzen</h2>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Kto</th>
+                <th>Kiedy</th>
+                <th>Utworzyl</th>
+            </tr>
+            </thead>
+            <tbody>
+            @for(event <- events) {
+            <tr>
+                <td>@event.name</td>
+                <td>@event.date</td>
+                <td>@event.creator</td>
+            </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

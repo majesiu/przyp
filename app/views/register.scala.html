@@ -1,9 +1,10 @@
-@(form: Form[Event])(implicit messages: Messages)
+@(form: Form[Account])(implicit messages: Messages)
+
 <!DOCTYPE html>
 
 <html lang="en">
 <head>
-    <title>Baza Danych</title>
+    <title>Logowanie</title>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
@@ -11,16 +12,11 @@
 </head>
 <body>
 <div class="container">
-    <ul class="nav nav-pills">
-        <li role="presentation"><a href="/index">Listuj</a></li>
-        <li role="presentation"><a href="/search">Szukaj</a></li>
-        <li role="presentation"  class="active"><a href="/new">Dodaj</a></li>
-    </ul>
-    @helper.form(action = routes.Application.addEvent) {
+    @helper.form(action = routes.Login.addAccount) {
     @helper.inputText(form("name"))
-    @helper.inputDate(form("date"))
-    @helper.inputText(form("creator"))
-    <input type="submit" value="Add Event"/>
+    @helper.inputPassword(form("pass"))
+    @helper.checkbox(form("accept"))
+    <input type="submit" value="Login"/>
     }
 </div>
 </body>

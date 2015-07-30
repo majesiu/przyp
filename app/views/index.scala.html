@@ -11,6 +11,7 @@
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="@routes.Assets.versioned("stylesheets/bg.css")">
 </head>
 <body>
 <div class="container">
@@ -21,12 +22,13 @@
 </ul>
 <div class="container">
     <h2>Lista Wydarzen</h2>
-    <table class="table table-striped">
+    <table class="table ">
         <thead>
         <tr>
             <th>Kto</th>
             <th>Kiedy</th>
             <th>Utworzyl</th>
+            <th>Mail</th>
         </tr>
         </thead>
         <tbody>
@@ -35,6 +37,7 @@
             <td>@event.name</td>
             <td>@event.date</td>
             <td>@event.creator</td>
+            <td><a href="/newMail?@event.name?@event.date?@event.creator" class="btn btn-info btn-sm">Wyslij przypomnienie</a></td>
         </tr>
         }
         </tbody>

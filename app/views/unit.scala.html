@@ -8,6 +8,8 @@
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="@routes.Assets.versioned("stylesheets/login.css")">
+    <link rel="stylesheet" href="@routes.Assets.versioned("stylesheets/bg.css")">
 </head>
 <body>
 <div class="container">
@@ -16,12 +18,16 @@
         <li role="presentation"><a href="/search">Szukaj</a></li>
         <li role="presentation"  class="active"><a href="/new">Dodaj</a></li>
     </ul>
-    @helper.form(action = routes.Application.addEvent) {
-    @helper.inputText(form("name"))
-    @helper.inputDate(form("date"))
-    @helper.inputText(form("creator"))
-    <input type="submit" value="Add Event"/>
+    <div class="form-signin">
+        <h2 class="form-signin-heading">Rejestracja</h2>
+        @helper.form(action = routes.Application.addEvent) {
+        <input type="inputType" id="name" name="name" class = "form-control" placeholder="Nazwa uzytkownika" autofocus/>
+        <input type="date" id="date" name="date" class = "form-control" placeholder ="data"/>
+        <input type="inputType" id="creator" name="creator" class = "form-control" placeholder ="Utworzyl"/>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Dodaj</button>
     }
+    </div>
+</div>
 </div>
 </body>
 </html>

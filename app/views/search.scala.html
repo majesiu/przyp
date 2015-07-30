@@ -1,4 +1,6 @@
 @(form: Form[SearchModel])(implicit messages: Messages)
+
+
 <!DOCTYPE html>
 
 <html lang="en">
@@ -8,6 +10,9 @@
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="@routes.Assets.versioned("stylesheets/login.css")">
+    <link rel="stylesheet" href="@routes.Assets.versioned("stylesheets/bg.css")">
+    <link rel="stylesheet" href="@routes.Assets.versioned("stylesheets/search.css")">
 </head>
 <body>
 <div class="container">
@@ -16,12 +21,32 @@
         <li role="presentation"  class="active"><a href="/search">Szukaj</a></li>
         <li role="presentation"><a href="/new">Dodaj</a></li>
     </ul>
-    @helper.form(action = routes.Search.startSearch) {
-    @helper.inputText(form("name"))
-    @helper.inputDate(form("date"))
-    @helper.inputText(form("creator"))
-    <input type="submit" value="Search Event"/>
-    }
+    <div class="form-signin">
+        <h2 class="form-signin-heading">Wyszukiwanie</h2>
+        @helper.form(routes.Search.startSearch) {
+        <div class="no-white">
+        <input type="inputType" id="name" name="name" class = "form-control" placeholder="Nazwa uzytkownika" autofocus/>
+        <select id="nameOp" name="nameOp">
+            <option value="like">Zawiera</option>
+            <option value="=">=</option>
+        </select>
+        <input type="date" id="date" name="date" class = "form-control"/>
+        <select id="dateOp" name="dateOp">
+            <option value=">="> Wszystkie </option>
+            <option value="="> = </option>
+            <option value=">"> > </option>
+            <option value=">="> >= </option>
+            <option value="<"> < </option>
+            <option value="<="> <= </option>
+        </select>
+        <input type="inputType" id="creator" name="creator" class = "form-control" placeholder="Utworzyl"/>
+        <select id="creaOp" name="creaOp">
+            <option value="like">Zawiera</option>
+            <option value="=">=</option>
+        </select>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Szukaj</button>
+        }</div>
+        </div>
 </div>
 </body>
 </html>

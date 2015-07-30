@@ -14,7 +14,8 @@ libraryDependencies ++= Seq(
   "com.typesafe.play" %% "anorm" % "2.4.0",
   "jp.t2v" %% "play2-auth" % "0.14.0",
   "jp.t2v" %% "play2-auth-social" % "0.14.0", // for social login
-  "jp.t2v" %% "play2-auth-test" % "0.14.0" % "test"
+  "jp.t2v" %% "play2-auth-test" % "0.14.0" % "test",
+  "com.typesafe.play" %% "play-mailer" % "3.0.1"
 )
 
 

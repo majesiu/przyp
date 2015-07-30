@@ -49,7 +49,7 @@ class Login extends Controller {
 
   def addAccount = Action { implicit c =>
     addAccountForm.bindFromRequest.fold(
-    errors => Ok("Bledny formularz"),
+    errors => Ok("lipa"),
     {
       case Account(name, pass, role) =>
         Account.addAccount(Account(name,pass,role))

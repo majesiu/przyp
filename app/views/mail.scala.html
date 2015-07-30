@@ -1,0 +1,40 @@
+@(form: Form[Reminder])(implicit messages: Messages)
+
+<html lang="en">
+<head>
+    <script>
+        var x = document.URL;
+        var split = x.split('?');
+        var name = split[1];
+        var date = split[2];
+        var crea = split[3];
+        window.onload = function() {
+        document.getElementById('name').value=name;
+        document.getElementById('date').value=date;
+        document.getElementById('creator').value=crea;
+        }
+    </script>
+    <title>Przypomnienie</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="@routes.Assets.versioned("stylesheets/login.css")">
+    <link rel="stylesheet" href="@routes.Assets.versioned("stylesheets/bg.css")">
+</head>
+<body>
+<div class="container">
+    <div class="form-signin">
+        <h2 class="form-signin-heading">Przypomnienie</h2>
+        @helper.form(action = routes.Mailing.mailReminder) {
+        <input type="hidden" id="name" name="name" class = "form-control" value="hmmm" placeholder="Nazwa uzytkownika" autofocus/>
+        <input type="hidden" id="date" name="date" class = "form-control" placeholder ="data"/>
+        <input type="hidden" id="creator" name="creator" class = "form-control" placeholder ="Utworzyl"/>
+        <input type="inputType" id="email" name="email" class = "form-control" placeholder="adres e-mail" autofocus/>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Wyslij</button>
+        }
+        <a href="/index"><button class="btn btn-lg btn-primary btn-block">Powrot</button></a>
+    </div>
+</div>
+</body>
+</html>

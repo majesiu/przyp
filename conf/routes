@@ -8,12 +8,14 @@ GET     /index                      controllers.Application.index
 GET     /new                        controllers.Application.add
 GET     /search                     controllers.Search.search
 GET     /register                   controllers.Login.register
+GET     /newMail                    controllers.Mailing.newMail
 
 # Submit new record to db
 POST    /addEvent                  controllers.Application.addEvent
 POST    /startSearch               controllers.Search.startSearch
 POST    /verify                    controllers.Login.verify
 POST    /addAccount                controllers.Login.addAccount
+POST    /mailReminder              controllers.Mailing.mailReminder
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)

@@ -1,0 +1,10 @@
+body {
+background: ##8cd78e;
+background-image: url("../images/zenbg-1.png"), url("../images/zenbg-2.png");
+background-repeat: repeat-x, repeat;
+color: white;
+}
+
+.nav .nav-pills {
+    color: white;
+}

@@ -8,6 +8,7 @@ import play.api.mvc.{Action, Controller}
 import play.api.i18n.Messages.Implicits._
 import anorm._
 import play.api.db.DB
+import views.html.helper.select
 
 /**
  * Created by user on 2015-07-28.
@@ -17,8 +18,11 @@ class Search extends Controller{
   val addSearchForm = Form(
     mapping(
       "name" -> optional(text),
+      "nameOp" -> text,
       "date" -> optional(date),
-      "email" -> optional(text)
+      "dateOp" -> text,
+      "creator" -> optional(text),
+      "creaOp" -> text
     )(SearchModel.apply)(SearchModel.unapply)
   )
 
@@ -30,9 +34,9 @@ class Search extends Controller{
     addSearchForm.bindFromRequest.fold(
     errors => BadRequest,
     {
-      case SearchModel(name, date, creator) =>
+      case SearchModel(name,nameOp, date,dateOp, creator,creaOp) =>
         DB.withConnection { implicit c =>
-          Ok(views.html.index(SearchModel.findFilter(new SearchModel(name,date,creator))))
+          Ok(views.html.index(SearchModel.findFilter(new SearchModel(name,nameOp,date,dateOp,creator,creaOp))))
         }
     }
     )

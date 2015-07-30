@@ -1,4 +1,6 @@
 @(form: Form[SearchModel])(implicit messages: Messages)
+
+
 <!DOCTYPE html>
 
 <html lang="en">
@@ -16,8 +18,9 @@
         <li role="presentation"  class="active"><a href="/search">Szukaj</a></li>
         <li role="presentation"><a href="/new">Dodaj</a></li>
     </ul>
-    @helper.form(action = routes.Search.startSearch) {
+    @helper.form(routes.Search.startSearch) {
     @helper.inputText(form("name"))
+    @helper.select(form("nameOp"), Seq("="->"=", "like %"->"Like")))
     @helper.inputDate(form("date"))
     @helper.inputText(form("creator"))
     <input type="submit" value="Search Event"/>
